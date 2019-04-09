@@ -9,17 +9,18 @@ class NegociacaoController{
 
     adiciona(event){
         event.preventDefault();
-
-        //essa função serve para descobrir o tipo do campo, no caso, o inputData
-        console.log(typeof(this._inputData.value))
-
-        // let negociacao = new Negociacao(
-        //     this._inputData.value,
-        //     this._inputQuantidade.value,
-        //     this._inputValor.value);
-
-        //convertendo a data, outrora string, em um obj date separado po - 
-        let data = new Date(this._inputData.value.replace(/-/g, ','));
-        console.log(data);
+        let data = new Date(...
+            this._inputData.value
+            .split('-')
+            .map((item, indice) => {
+                return item - indice % 2;
+            })
+            );
+            let negociacao = new Negociacao(
+                data,
+                this._inputQuantidade.value,
+                this._inputValor.value
+            );
+            console.log(negociacao);
     }
 }
