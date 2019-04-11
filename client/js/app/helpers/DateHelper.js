@@ -7,16 +7,20 @@ class DateHelper{
     // }
 
     static dataParaTexto(data){
-        return data.getDate() + '/' 
-            + (data.getMonth() +1)+ '/' 
-            + data.getFullYear();
+        return `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`; //isso resume tudo isso:
+        // data.getDate() + '/' 
+        //     + (data.getMonth() +1)+ '/' 
+        //     + data.getFullYear();
     }
     
     static textoParadata(texto){
+        //esse if testa se o parâmetro texto, que virará data, segue o padrão aaaa/mm/dd:
+        if(!/\d{4}-\d{2}-\d{2}/.test(texto))
+        throw new Error ('A data deve estar no formato aaaa/mm/dd');
+
         return new Date (...texto.split('-')
         .map((item, indice) => {
             return item - indice % 2;
         }))
     }
-    
 }
