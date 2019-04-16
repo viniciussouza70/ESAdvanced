@@ -15,7 +15,7 @@ class DateHelper{
     
     static textoParadata(texto){
         //esse if testa se o parâmetro texto, que virará data, segue o padrão aaaa/mm/dd:
-        if(!/\d{4}-\d{2}-\d{2}/.test(texto))
+        if(!/\d{4}-\d{2}-\d{2}/.test(texto)) // \d{4} = dígito de 4 números
         throw new Error ('A data deve estar no formato aaaa/mm/dd');
 
         return new Date (...texto.split('-')
