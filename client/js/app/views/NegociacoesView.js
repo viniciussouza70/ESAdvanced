@@ -2,7 +2,7 @@ class NegociacoesView {
     constructor(elemento){
         this._elemento = elemento;
     }
-    _template(){
+    _template(model){
         return ` 
             <table class="table table-hover table-bordered">
             <thead>
@@ -15,6 +15,16 @@ class NegociacoesView {
             </thead>
             
             <tbody>
+            ${
+                model.negociacoes.map(n => {
+                    return `<tr>
+                                <td>${DateHelper.dataParaTexto(n.data)}</td>
+                                <td>${n.quantidade}</td>
+                                <td>${n.valor}</td>
+                                <td>${n.volume}</td>
+                            </t>
+                            `
+                }).join('')} 
             </tbody>
             
             <tfoot>
@@ -22,8 +32,8 @@ class NegociacoesView {
         </table>
         `;
     }
-    update(){
-        this._elemento.innerHTML = this._template(); /* o InnerHTML é um método que converte uma string, 
+    update(model){
+        this._elemento.innerHTML = this._template(model); /* o InnerHTML é um método que converte uma string, 
         que nesse caso é passada pelo elemento, para HTML puro (caso a string esteja correta p/ html) */
     }
 }

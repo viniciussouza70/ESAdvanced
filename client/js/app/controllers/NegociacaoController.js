@@ -8,7 +8,7 @@ class NegociacaoController{
         this._listaNegociacoes = new ListaNegociacoes(); //criando o obj que manupulará a classe ListaNegociacoes
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
 
-        this._negociacoesView.update(); //fazendo a tabela aparecer no DOM 
+        this._negociacoesView.update(this._listaNegociacoes); //fazendo a tabela aparecer no DOM 
     }
 
     adiciona(event){
