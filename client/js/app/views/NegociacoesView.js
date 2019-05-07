@@ -1,7 +1,5 @@
-class NegociacoesView {
-    constructor(elemento){
-        this._elemento = elemento;
-    }
+class NegociacoesView extends View {
+    
     _template(model){
         return ` 
             <table class="table table-hover table-bordered">
@@ -37,8 +35,5 @@ class NegociacoesView {
         </table>
         `;
     }
-    update(model){
-        this._elemento.innerHTML = this._template(model); /* o InnerHTML é um método que converte uma string, 
-        que nesse caso é passada pelo elemento, para HTML puro (caso a string esteja correta p/ html) */
-    }
+
 }
